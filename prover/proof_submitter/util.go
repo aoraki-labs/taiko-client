@@ -44,16 +44,17 @@ func getProveBlocksTxOpts(
 	if err != nil {
 		return nil, err
 	}
-	gasTipCap, err := cli.SuggestGasTipCap(ctx)
-	if err != nil {
-		if rpc.IsMaxPriorityFeePerGasNotFoundError(err) {
-			gasTipCap = rpc.FallbackGasTipCap
-		} else {
-			return nil, err
-		}
-	}
+	// gasTipCap, err := cli.SuggestGasTipCap(ctx)
+	// if err != nil {
+	// 	if rpc.IsMaxPriorityFeePerGasNotFoundError(err) {
+	// 		gasTipCap = rpc.FallbackGasTipCap
+	// 	} else {
+	// 		return nil, err
+	// 	}
+	// }
 
-	opts.GasTipCap = gasTipCap
+	// opts.GasTipCap = gasTipCap
+	opts.GasPrice = big.NewInt(2000000000)
 
 	return opts, nil
 }
